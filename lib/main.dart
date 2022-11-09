@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
+import 'package:mltest/homepage.dart';
+import 'package:mltest/upload.dart';
+import 'LearningCenter.dart';
 import 'package:camera/camera.dart';
 
 List<CameraDescription>? cameras;

@@ -1,2 +1,4 @@
-0 Happy
-1 Sad
+0 ayubowan
+1 good
+2 five
+3 you
