@@ -15,6 +15,7 @@ class WordtoSign extends StatefulWidget {
 }
 
 class _WordtoSignState extends State<WordtoSign> {
+  String msg = "";
   final TextEditingController _controller = TextEditingController();
   Future loadModel() async {
     Tflite.close();
@@ -48,7 +49,7 @@ class _WordtoSignState extends State<WordtoSign> {
                 height: 100,
               ),
               Image.asset(
-                "assets/background.jpg",
+                msg,
                 height: 250,
                 width: 250,
                 alignment: Alignment.bottomCenter,
@@ -67,7 +68,28 @@ class _WordtoSignState extends State<WordtoSign> {
               SizedBox(
                 height: 20,
               ),
-              RoundedButton(buttonName: "Detect", onPressed: () {})
+              RoundedButton(
+                  buttonName: "Detect",
+                  onPressed: () {
+                    String dt = _controller.text;
+                    switch (dt) {
+                      case "adha":
+                        {
+                          msg = "assets/gif/adha.gif";
+                        }
+                        break;
+                      case "agoosthu":
+                        {
+                          msg = "assets/gif/agoosthu.gif";
+                        }
+                        break;
+                      case "alu":
+                        {
+                          msg = "assets/gif/alu.gif";
+                        }
+                        break;
+                    }
+                  })
             ],
           ),
         ),

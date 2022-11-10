@@ -2,7 +2,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:mltest/main.dart';
 import 'package:tflite/tflite.dart';
-
 import 'homePage.dart';
 
 class LetsTalk extends StatefulWidget {

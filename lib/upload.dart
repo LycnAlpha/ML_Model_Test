@@ -59,7 +59,7 @@ class _UploadState extends State<Upload> {
                 height: 50,
               ),
               Text(
-                "Hi",
+                output,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               )
             ],
@@ -76,29 +76,14 @@ class _UploadState extends State<Upload> {
 
   runModel() async {
     if (_imageFile != null) {
-      var predictions = await Tflite.detectObjectOnImage(
-          path: _imageFile.path, // required
-          model: "YOLO",
-          imageMean: 0.0,
-          imageStd: 255.0,
-          threshold: 0.3, // defaults to 0.1
-          numResultsPerClass: 2, // defaults to 5
-          anchors: [
-            0.57273,
-            0.677385,
-            1.87446,
-            2.06253,
-            3.33843,
-            5.47434,
-            7.88282,
-            3.52778,
-            9.77052,
-            9.16828
-          ], // defaults to [0.57273,0.677385,1.87446,2.06253,3.33843,5.47434,7.88282,3.52778,9.77052,9.16828]
-          blockSize: 32, // defaults to 32
-          numBoxesPerBlock: 5, // defaults to 5
-          asynch: true // defaults to true
-          );
+      var predictions = await Tflite.runModelOnImage(
+          path: _imageFile.path,
+          imageMean: 0.0, // defaults to 117.0
+          imageStd: 255.0, // defaults to 1.0
+          numResults: 2, // defaults to 5
+          threshold: 0.2, // defaults to 0.1
+          asynch: true);
+
       predictions!.forEach((element) {
         setState(() {
           output = element['label'];
