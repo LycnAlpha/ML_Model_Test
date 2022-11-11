@@ -20,7 +20,7 @@ class _UploadState extends State<Upload> {
   late PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
 
-  late File _image;
+  File? _image;
   final picker = ImagePicker();
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,15 @@ class _UploadState extends State<Upload> {
           body: Column(
             children: [
               SizedBox(
-                height: 250,
+                height: 100,
+              ),
+              Container(
+                child: _image != null
+                    ? Image.file(_image!)
+                    : Text("No image selected"),
+              ),
+              SizedBox(
+                height: 30,
               ),
               RoundedButton(
                   buttonName: "Upload",

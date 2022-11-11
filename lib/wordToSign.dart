@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,7 +17,7 @@ class WordtoSign extends StatefulWidget {
 }
 
 class _WordtoSignState extends State<WordtoSign> {
-  String msg = "";
+  String msg = " ";
   final TextEditingController _controller = TextEditingController();
   Future loadModel() async {
     Tflite.close();
@@ -29,6 +31,7 @@ class _WordtoSignState extends State<WordtoSign> {
     }
   }
 
+  File? _image;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -48,11 +51,10 @@ class _WordtoSignState extends State<WordtoSign> {
               SizedBox(
                 height: 100,
               ),
-              Image.asset(
-                msg,
-                height: 250,
-                width: 250,
-                alignment: Alignment.bottomCenter,
+              Container(
+                child: msg != " "
+                    ? Image.asset(msg)
+                    : Image.asset("assets/user.png"),
               ),
               SizedBox(
                 height: 50,
@@ -75,17 +77,74 @@ class _WordtoSignState extends State<WordtoSign> {
                     switch (dt) {
                       case "adha":
                         {
-                          msg = "assets/gif/adha.gif";
+                          setState(() {
+                            msg = "assets/gif/adha.gif";
+                          });
                         }
                         break;
                       case "agoosthu":
                         {
-                          msg = "assets/gif/agoosthu.gif";
+                          setState(() {
+                            msg = "assets/gif/agoosthu.gif";
+                          });
                         }
                         break;
                       case "alu":
                         {
-                          msg = "assets/gif/alu.gif";
+                          setState(() {
+                            msg = "assets/gif/alu.gif";
+                          });
+                        }
+                        break;
+                      case "anthima":
+                        {
+                          setState(() {
+                            msg = "assets/gif/anthima.gif";
+                          });
+                        }
+                        break;
+
+                      case "awurudhdha":
+                        {
+                          setState(() {
+                            msg = "assets/gif/awurudhdha.gif";
+                          });
+                        }
+                        break;
+
+                      case "desamber":
+                        {
+                          setState(() {
+                            msg = "assets/gif/desamber.gif";
+                          });
+                        }
+                        break;
+                      case "lamayaa":
+                        {
+                          setState(() {
+                            msg = "assets/gif/lamayaa.gif";
+                          });
+                        }
+                        break;
+                      case "medhiyam_rae":
+                        {
+                          setState(() {
+                            msg = "assets/gif/medhiyam_rae.gif";
+                          });
+                        }
+                        break;
+                      case "senasuraadhaa":
+                        {
+                          setState(() {
+                            msg = "assets/gif/senasuraadhaa.gif";
+                          });
+                        }
+                        break;
+                      case "wathura":
+                        {
+                          setState(() {
+                            msg = "assets/gif/wathura.gif";
+                          });
                         }
                         break;
                     }
